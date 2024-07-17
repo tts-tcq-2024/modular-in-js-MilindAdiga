@@ -1,6 +1,6 @@
-const MajorColorNames = require('./MajorColorNames');
-const MinorColorNames = require('./MinorColorNames');
-const ColorPair = require('./ColorPair');
+const MajorColorNames = require('../app/majorColors');
+const MinorColorNames = require('../app/minorColors');
+const ColorPair = require('../app/colorPair');
 
 function getColorFromPairNumber(pairNumber) {
     const minorSize = MajorColorNames.length;
