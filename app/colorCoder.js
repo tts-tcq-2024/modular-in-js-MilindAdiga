@@ -1,6 +1,6 @@
 const ColorPair = require('../app/colorPair');
-const { getColorFromPairNumber, getPairNumberFromColor } = require('./ColorUtils');
-const printManual = require('./PrintManual');
+const { getColorFromPairNumber, getPairNumberFromColor } = require('../app/colorUtils');
+const printManual = require('../app/printManual');
 
 function test() {
     let pairNumber = 4;
