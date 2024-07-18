@@ -2,37 +2,40 @@ const ColorPair = require('../app/colorPair');
 const { getColorFromPairNumber, getPairNumberFromColor } = require('../app/colorUtils');
 const printManual = require('../app/printManual');
 
-function test() {
-    let pairNumber = 4;
-    let testPair1 = getColorFromPairNumber(pairNumber);
-    console.log(`[In]Pair Number: ${pairNumber}, [Out] Colors: ${testPair1}`);
-    console.assert(testPair1.majorColor === "WHITE");
-    console.assert(testPair1.minorColor === "BROWN");
+function runTestCases() {
+    const testCases = [
+        { pairNumber: 4, expectedMajor: "WHITE", expectedMinor: "BROWN" },
+        { pairNumber: 5, expectedMajor: "WHITE", expectedMinor: "SLATE" },
+        { pairNumber: 23, expectedMajor: "RED", expectedMinor: "GREEN" }
+    ];
 
-    pairNumber = 5;
-    testPair1 = getColorFromPairNumber(pairNumber);
-    console.log(`[In]Pair Number: ${pairNumber}, [Out] Colors: ${testPair1}`);
-    console.assert(testPair1.majorColor === "WHITE");
-    console.assert(testPair1.minorColor === "SLATE");
+    testCases.forEach(({ pairNumber, expectedMajor, expectedMinor }) => {
+        const colorPair = getColorFromPairNumber(pairNumber);
+        console.log(`[In] Pair Number: ${pairNumber}, [Out] Colors: ${colorPair}`);
+        console.assert(colorPair.majorColor === expectedMajor, `Expected Major: ${expectedMajor}, but got: ${colorPair.majorColor}`);
+        console.assert(colorPair.minorColor === expectedMinor, `Expected Minor: ${expectedMinor}, but got: ${colorPair.minorColor}`);
+    });
 
-    pairNumber = 23;
-    testPair1 = getColorFromPairNumber(pairNumber);
-    console.log(`[In]Pair Number: ${pairNumber}, [Out] Colors: ${testPair1}`);
-    console.assert(testPair1.majorColor === "RED");
-    console.assert(testPair1.minorColor === "GREEN");
+    const reverseTestCases = [
+        { majorColor: "YELLOW", minorColor: "GREEN", expectedPairNumber: 18 },
+        { majorColor: "RED", minorColor: "BLUE", expectedPairNumber: 6 }
+    ];
 
-    let testPair2 = new ColorPair("YELLOW", "GREEN");
-    pairNumber = getPairNumberFromColor(testPair2);
-    console.log(`[In]Colors: ${testPair2}, [Out] PairNumber: ${pairNumber}`);
-    console.assert(pairNumber === 18);
-
-    testPair2 = new ColorPair("RED", "BLUE");
-    pairNumber = getPairNumberFromColor(testPair2);
-    console.log(`[In]Colors: ${testPair2}, [Out] PairNumber: ${pairNumber}`);
-    console.assert(pairNumber === 6);
-
-    console.log("Manual:");
-    console.log(printManual());
+    reverseTestCases.forEach(({ majorColor, minorColor, expectedPairNumber }) => {
+        const colorPair = new ColorPair(majorColor, minorColor);
+        const pairNumber = getPairNumberFromColor(colorPair);
+        console.log(`[In] Colors: ${colorPair}, [Out] Pair Number: ${pairNumber}`);
+        console.assert(pairNumber === expectedPairNumber, `Expected Pair Number: ${expectedPairNumber}, but got: ${pairNumber}`);
+    });
 }
 
-test();
+function printColorCodingManual() {
+    console.log("Color Coding Manual:\n" + printManual());
+}
+
+function main() {
+    runTestCases();
+    printColorCodingManual();
+}
+
+main();
