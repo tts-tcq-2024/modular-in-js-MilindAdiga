@@ -1,6 +1,6 @@
 const ColorPair = require('../app/colorPair');
 const { getColorFromPairNumber, getPairNumberFromColor } = require('../app/colorUtils');
-const printManual = require('../app/printManual');
+const buildColorCode = require('../app/buildColorCodeManual');
 
 function runTestCases() {
     const testCases = [
@@ -30,7 +30,7 @@ function runTestCases() {
 }
 
 function printColorCodingManual() {
-    console.log("Color Coding Manual:\n" + printManual());
+    console.log("Color Coding Manual:\n" + buildColorCode());
 }
 
 function main() {
