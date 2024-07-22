@@ -1,6 +1,6 @@
 const ColorPair = require('../app/colorPair');
 const { getColorFromPairNumber, getPairNumberFromColor } = require('../app/colorUtils');
-const buildColorCode = require('../app/buildColorCodeManual');
+const buildColorCode = require('../app/colorCodeManual');
 
 function runTestCases() {
     const testCases = [
