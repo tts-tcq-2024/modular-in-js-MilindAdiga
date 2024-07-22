@@ -2,7 +2,7 @@ const MajorColorNames = require('../app/majorColors');
 const MinorColorNames = require('../app/minorColors');
 const { getColorFromPairNumber } = require('../app/colorUtils');
 
-function printManual() {
+function buildColorCodeManual() {
     const minorSize = MajorColorNames.length;
     const majorSize = MinorColorNames.length;
     let manual = '';
@@ -15,4 +15,4 @@ function printManual() {
     return manual;
 }
 
-module.exports = printManual;
+module.exports = buildColorCodeManual;
